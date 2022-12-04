@@ -1,30 +1,19 @@
-import LetterAvatar from "./components/LetterAvatar";
+import "./App.css";
+
+// import components
+import Chats from "./components/Chats";
 import MessageInput from "./components/MessageInput";
 
-import "./App.css";
-import ChatBox from "./components/ChatBox";
+// import types
+import Chat from "./types/chat";
+
+const chats: Array<Chat> = [];
 
 const App = () => {
   return (
-    <div
-      className="App"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <div
-        style={{
-          flexGrow: 1,
-          overflow: "auto",
-        }}
-      >
-        <LetterAvatar name="Artflow" />
-        <ChatBox text={"Hello, I am new here."} />
-      </div>
-      <div>
-        <MessageInput onEnter={() => {}} />
-      </div>
+    <div className="App">
+      <Chats chats={chats} />
+      <MessageInput onEnter={() => {}} />
     </div>
   );
 };

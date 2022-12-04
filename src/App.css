@@ -5,3 +5,14 @@ body,
   height: 100%;
   margin: 0;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.chats-container {
+  padding: 12px;
+  flex-grow: 1;
+  overflow: auto;
+}

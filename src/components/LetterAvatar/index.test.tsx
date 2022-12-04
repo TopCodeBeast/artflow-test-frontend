@@ -6,8 +6,14 @@ const makeSut = (props: LetterAvatarProps) => {
 };
 
 describe("<LetterAvatar />", () => {
-  test("Should render name correctly.", () => {
-    const { getByText } = makeSut({ name: "Arnold" });
+  test("Should render name and color correctly.", () => {
+    const { getByText } = makeSut({
+      user: {
+        name: "Arnold",
+        color: "red",
+        id: "arnold",
+      },
+    });
     expect(getByText(/A/)).toBeInTheDocument();
   });
 });

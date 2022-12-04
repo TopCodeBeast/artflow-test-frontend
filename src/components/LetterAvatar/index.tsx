@@ -1,31 +1,28 @@
+// import types
+import User from "../../types/user";
+
 export interface LetterAvatarProps {
-  name: string;
-  fontSize?: number;
-  size?: number;
-  backgroundColor?: string;
+  user: User;
 }
 
-const LetterAvatar = ({
-  name,
-  fontSize = 32,
-  size = 40,
-  backgroundColor = "purple",
-}: LetterAvatarProps) => {
+const LetterAvatar = ({ user }: LetterAvatarProps) => {
   return (
     <div
       style={{
-        width: size,
-        height: size,
-        borderRadius: size / 2,
-        backgroundColor,
-        fontSize,
+        minWidth: "40px",
+        minHeight: "40px",
+        width: "40px",
+        height: "40px",
+        borderRadius: 20,
+        backgroundColor: user.color,
+        fontSize: 32,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         color: "white",
       }}
     >
-      {name[0] || "A"}
+      {user.name[0] || "A"}
     </div>
   );
 };
