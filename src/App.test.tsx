@@ -1,8 +1,12 @@
-import { render, screen } from "@testing-library/react";
 import App from "./App";
+import { render } from "@testing-library/react";
 
-test("renders learn react link", () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+const makeSut = () => {
+  return render(<App />);
+};
+
+describe("<App />", () => {
+  test("Should render message input correctly.", () => {
+    expect(true).toEqual(true);
+  });
 });
