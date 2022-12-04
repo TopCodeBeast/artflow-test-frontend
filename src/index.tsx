@@ -5,15 +5,18 @@ import reportWebVitals from "./reportWebVitals";
 
 // import context
 import { CurrentUserContextProvider } from "./contexts/CurrentUserContext";
+import { ChatsContextProvider } from "./contexts/ChatsContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <CurrentUserContextProvider>
-      <App />
-    </CurrentUserContextProvider>
+    <ChatsContextProvider>
+      <CurrentUserContextProvider>
+        <App />
+      </CurrentUserContextProvider>
+    </ChatsContextProvider>
   </React.StrictMode>
 );
 

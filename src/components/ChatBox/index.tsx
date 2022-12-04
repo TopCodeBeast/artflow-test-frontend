@@ -20,7 +20,6 @@ const ChatBox = ({ chat }: ChatBoxProps) => {
 
   return (
     <div
-      role="chat-box"
       style={{
         display: "flex",
         width: "70%",
@@ -28,6 +27,7 @@ const ChatBox = ({ chat }: ChatBoxProps) => {
         flexDirection: isMe ? "row-reverse" : "row",
         marginTop: 24,
       }}
+      data-role="chatbox"
     >
       <LetterAvatar user={chat.user} />
       {chat.message.loading ? (

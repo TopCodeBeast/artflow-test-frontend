@@ -35,7 +35,11 @@ const chats: Array<Chat> = [
 
 describe("<Chats />", () => {
   test("Should render all of chats box", () => {
-    const { getAllByRole } = makeSut({ chats });
-    expect(getAllByRole("chat-box").length).toBe(chats.length);
+    const { getAllByTestId } = makeSut({ chats });
+    expect(
+      getAllByTestId("chat-box-", {
+        exact: false,
+      }).length
+    ).toBe(chats.length);
   });
 });
