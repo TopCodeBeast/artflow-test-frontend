@@ -10,7 +10,7 @@ const sampleProps: ChatBoxProps = {
     user: {
       name: "Arnold",
       id: "arnold",
-      color: "purple",
+      color: "orange",
     },
     message: {
       text: "Hello There",
@@ -24,7 +24,7 @@ const messageLoadingProps: ChatBoxProps = {
     user: {
       name: "Arnold",
       id: "arnold",
-      color: "purple",
+      color: "orange",
     },
     message: {
       text: "",
@@ -37,7 +37,7 @@ describe("<ChatBox />", () => {
   test("Should render user correctly.", () => {
     const { getByText } = makeSut(sampleProps);
     expect(getByText(/A/)).toBeInTheDocument();
-    expect(getByText(/A/)).toHaveStyle(`background-color: purple`);
+    expect(getByText(/A/)).toHaveStyle(`background-color: orange`);
     expect(getByText(/A/)).toHaveStyle(`color: white`);
   });
 

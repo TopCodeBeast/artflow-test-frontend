@@ -10,6 +10,9 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 // import types
 import User from "../../types/user";
 
+// import constants
+import { apiURL } from "../../constants";
+
 export interface ChatBoxProps {
   chat: Chat;
 }
@@ -22,8 +25,8 @@ const ChatBox = ({ chat }: ChatBoxProps) => {
     <div
       style={{
         display: "flex",
-        width: "70%",
-        marginLeft: isMe ? "30%" : 0,
+        width: "90%",
+        marginLeft: isMe ? "10%" : 0,
         flexDirection: isMe ? "row-reverse" : "row",
         marginTop: 24,
       }}
@@ -39,6 +42,16 @@ const ChatBox = ({ chat }: ChatBoxProps) => {
           src={window.origin + "/loading.gif"}
           width={50}
           height={50}
+        />
+      ) : chat.message.hasImage ? (
+        <img
+          style={{
+            marginLeft: 8,
+          }}
+          alt="portrait"
+          src={apiURL + chat.message.imageURL}
+          width={100}
+          height={100}
         />
       ) : (
         <div

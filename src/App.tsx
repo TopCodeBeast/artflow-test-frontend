@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./App.css";
 
 // import components
@@ -8,20 +9,28 @@ import MessageInput from "./components/MessageInput";
 import { useChats } from "./contexts/ChatsContext";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
+// import utils
+import { chatWithBot } from "./utils/chat";
+
 const App = () => {
-  const { chats, addChat } = useChats();
+  const { chats, addChats } = useChats();
   const currentUser = useCurrentUser();
+
+  useEffect(() => {
+    window.localStorage.setItem("chats", "[]");
+  }, []);
 
   const onEnter = (text: string) => {
     if (text.length === 0) {
       return;
     }
-    addChat({
-      user: currentUser,
-      message: {
-        loading: false,
-        text,
-      },
+    chatWithBot(text, currentUser).then((res) => {
+      addChats(res.chats);
+      if (res.promise) {
+        res.promise.then((newChats) => {
+          addChats(newChats);
+        });
+      }
     });
   };
 

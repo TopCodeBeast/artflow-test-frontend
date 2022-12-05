@@ -13,7 +13,7 @@ const chats: Array<Chat> = [
     user: {
       name: "Customer",
       id: "customer",
-      color: "purple",
+      color: "orange",
     },
     message: {
       loading: false,
@@ -24,7 +24,7 @@ const chats: Array<Chat> = [
     user: {
       name: "Artflow",
       id: "artflow",
-      color: "orange",
+      color: "purple",
     },
     message: {
       loading: false,

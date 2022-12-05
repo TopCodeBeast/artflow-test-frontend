@@ -5,12 +5,12 @@ import Chat from "../../types/chat";
 
 export interface ChatsContextState {
   chats: Array<Chat>;
-  addChat: (chat: Chat) => void;
+  addChats: (inputChats: Array<Chat>) => void;
 }
 
 const defaultState: ChatsContextState = {
   chats: [],
-  addChat: (chat: Chat) => {},
+  addChats: (inputChats: Array<Chat>) => {},
 };
 
 const chatsContext = createContext<ChatsContextState>(defaultState);
@@ -20,16 +20,37 @@ interface ContextProps {
 }
 
 const ChatsContextProvider = ({ children }: ContextProps) => {
-  const [chats, setChats] = useState<Array<Chat>>([]);
+  const [chats, setChats] = useState<Array<Chat>>([
+    {
+      user: {
+        id: "customer",
+        name: "Customer",
+        color: "orange",
+      },
+      message: {
+        loading: false,
+        text: "Hi there, I am Aida, an AI bot created by Artflow.",
+      },
+    },
+  ]);
 
-  const addChat = (chat: Chat) => {
-    let tempChats: Array<Chat> = [...chats];
-    tempChats.push(chat);
+  const addChats = (inputChats: Array<Chat>) => {
+    const storedChats: Array<Chat> = JSON.parse(
+      window.localStorage.getItem("chats") || "[]"
+    );
+    let tempChats: Array<Chat>;
+    if (chats.length > storedChats.length) {
+      tempChats = [...chats];
+    } else {
+      tempChats = [...storedChats];
+    }
+    tempChats = tempChats.concat(inputChats);
     setChats(tempChats);
+    window.localStorage.setItem("chats", JSON.stringify(tempChats));
   };
 
   return (
-    <chatsContext.Provider value={{ chats, addChat }}>
+    <chatsContext.Provider value={{ chats, addChats }}>
       {children}
     </chatsContext.Provider>
   );
