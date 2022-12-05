@@ -33,6 +33,22 @@ const messageLoadingProps: ChatBoxProps = {
   },
 };
 
+const portraitProps: ChatBoxProps = {
+  chat: {
+    user: {
+      name: "Arnold",
+      id: "arnold",
+      color: "orange",
+    },
+    message: {
+      text: "",
+      loading: false,
+      hasImage: true,
+      imageURL: "portrait",
+    },
+  },
+};
+
 describe("<ChatBox />", () => {
   test("Should render user correctly.", () => {
     const { getByText } = makeSut(sampleProps);
@@ -53,5 +69,10 @@ describe("<ChatBox />", () => {
       "src",
       window.origin + "/loading.gif"
     );
+  });
+
+  test("Should render portrait loading correctly.", () => {
+    const { getByAltText } = makeSut(portraitProps);
+    expect(getByAltText("portrait")).toBeInTheDocument();
   });
 });

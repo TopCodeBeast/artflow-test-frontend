@@ -44,15 +44,17 @@ const ChatBox = ({ chat }: ChatBoxProps) => {
           height={50}
         />
       ) : chat.message.hasImage ? (
-        <img
-          style={{
-            marginLeft: 8,
-          }}
-          alt="portrait"
-          src={apiURL + chat.message.imageURL}
-          width={100}
-          height={100}
-        />
+        chat.message.imageURL && (
+          <img
+            style={{
+              marginLeft: 8,
+            }}
+            alt="portrait"
+            src={apiURL + chat.message.imageURL}
+            width={100}
+            height={100}
+          />
+        )
       ) : (
         <div
           style={{
