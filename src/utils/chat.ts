@@ -66,7 +66,10 @@ const chatWithBot: (
                   resultChat,
                 ]);
               })
-              .catch(reject);
+              .catch((err) => {
+                console.error(err);
+                reject(err);
+              });
           });
           resolve({
             chats: [
@@ -96,7 +99,10 @@ const chatWithBot: (
           });
         }
       })
-      .catch(reject);
+      .catch((err) => {
+        console.error(err);
+        reject(err);
+      });
   });
 };
 
